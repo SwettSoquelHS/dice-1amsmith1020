@@ -8,7 +8,7 @@ Die Die6;
 Die Die7;
 Die Die8;
 Die Die9;
-
+int counter;
 
 void setup() {
   size(500, 500);
@@ -48,6 +48,8 @@ void draw() {
   
   Die9 = new Die(320,320);
   Die9.show();
+  fill(255);
+  text("total dots: " + counter, 50, 475);
 }
 
 void mousePressed() {
@@ -91,23 +93,27 @@ class Die {
     if (randSide == 1) {
       fill(0);
       ellipse(90,90,10,10);
+      counter = counter + 1;
     } else if(randSide == 2){
      fill(0);
      ellipse(60,110,10,10);
      ellipse(120,70,10,10);
+     counter = counter + 2;
     } else if(randSide==3){
      fill(0);
      ellipse(60,110,10,10);
      ellipse(90,90,10,10);
      ellipse(120,70,10,10);
+     
+     counter = counter + 3;
     } else if(randSide == 4){
       fill(0);
-      //row1
      ellipse(120,70,10,10);
      ellipse(120,110,10,10);
-     //row2
      ellipse(60,110,10,10);
      ellipse(60,70,10,10);
+     
+     counter = counter + 4;
     } else if(randSide==5){
      fill(0); 
      ellipse(120,70,10,10);
@@ -115,6 +121,7 @@ class Die {
      ellipse(90,90,10,10);
      ellipse(60,110,10,10);
      ellipse(60,70,10,10);
+     counter = counter + 5;
     } else { 
       fill(0); 
      ellipse(120,70,10,10);
@@ -123,6 +130,7 @@ class Die {
      ellipse(60,90,10,10);
      ellipse(60,110,10,10);
      ellipse(60,70,10,10);
+     counter = counter + 6;
     }
     popMatrix();
     
