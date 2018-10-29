@@ -8,11 +8,20 @@ Die Die6;
 Die Die7;
 Die Die8;
 Die Die9;
-int counter;
+int counter = 0;
 
 void setup() {
   size(500, 500);
-
+  
+  Die1 = new Die(-20, -20);
+  Die2 = new Die(150,-20);
+  Die3 = new Die(320,-20);
+  Die4 = new Die(-20, 150);
+  Die5 = new Die(150,150);
+  Die6 = new Die(320,150);
+  Die7 = new Die(-20, 320);
+  Die8 = new Die(150,320);
+  Die9 = new Die(320,320);
   //no loop means that draw is only called once
   //OR if you ever call redraw()
   noLoop();
@@ -21,42 +30,32 @@ void setup() {
 void draw() {
   background(55);
   //Die locations on screen
-  
-  Die1 = new Die(-20, -20);
   Die1.show();
-  
-  Die2 = new Die(150,-20);
   Die2.show();
-  
-  Die3 = new Die(320,-20);
   Die3.show();
-  
-  Die4 = new Die(-20, 150);
   Die4.show();
-  
-  Die5 = new Die(150,150);
   Die5.show();
-  
-  Die6 = new Die(320,150);
   Die6.show();
-  
-  Die7 = new Die(-20, 320);
   Die7.show();
-  
-  Die8 = new Die(150,320);
   Die8.show();
-  
-  Die9 = new Die(320,320);
   Die9.show();
   fill(255);
   text("total dots: " + counter, 50, 475);
 }
 
 void mousePressed() {
-  //No real work for you to do here
-  //calling redraw will do the necessary work 
-  //to redraw your processing script
+ 
+  counter = 0;
   redraw();
+  Die1.roll();
+  Die2.roll();
+  Die3.roll();
+  Die4.roll();
+  Die5.roll();
+  Die6.roll();
+  Die7.roll();
+  Die8.roll();
+  Die9.roll();
 }
 
 
@@ -71,10 +70,7 @@ class Die {
   Die(int x, int y) {
     x_pos = x;
     y_pos = y;
-    fill(255);
-    pushMatrix();
-    translate(x_pos, y_pos);
-    rect(50, 50, 80, 80, 7);
+   
     //variable initializations here
   }
 
@@ -89,7 +85,11 @@ class Die {
 	  Use the randomly assigned roll value to draw the face of a die
    	*/
   void show() {
-    roll();
+     fill(255);
+    pushMatrix();
+    translate(x_pos, y_pos);
+    rect(50, 50, 80, 80, 7);
+   
     if (randSide == 1) {
       fill(0);
       ellipse(90,90,10,10);
